@@ -1,0 +1,26 @@
+[user]
+    name = Jonas Gröger
+    email = jonas@huntun.de
+    signingKey = BECD4B5B330D89B5
+[push]
+    default = current
+    followTags = true
+[alias]
+    l = log --pretty --decorate --graph
+    st = status
+    ci = commit
+    co = checkout
+    diffs = diff --staged
+    g = grep --break --heading --line-number
+    tags = tag -l
+[core]
+    autocrlf = input
+    quotepath = off
+[grep]
+    lineNumber = true
+    extendRegexp = true
+[color]
+    ui = auto
+[rerere]
+    enabled = true
+    autoupdate = true

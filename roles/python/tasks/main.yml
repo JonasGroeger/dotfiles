@@ -1,0 +1,34 @@
+---
+
+- name: Install Python 2
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - python
+    - python-dev
+    - ipython
+
+- name: Install Python3
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - python3
+    - python3-pip
+    - python3-venv
+    - python3-wheel
+    - python3-dev
+    - ipython3
+
+- name: Link
+  file:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "/home/{{ username }}/.{{ item }}"
+    state: link
+    force: yes
+  with_items:
+    - pypirc
+
+- name: Install Python 3 Tools
+  pip: name="{{ item }}" executable=pip3
+  with_items:
+    - pipenv
+    - cookiecutter
+    - ansible-lint

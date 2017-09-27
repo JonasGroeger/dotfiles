@@ -1,0 +1,24 @@
+---
+
+- name: Install ssh
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - ssh
+
+- name: Check if {{ username }} has SSH key
+  stat: path="/home/{{ username }}/.ssh/id_rsa"
+  register: ssh_key
+
+- name: Create SSH key
+  user:
+    name: "{{ username }}"
+    generate_ssh_key: yes
+    ssh_key_bits: 4096
+  when: ssh_key.stat.exists == False
+
+- name: Copy .ssh/config
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "/home/{{ username }}/.{{ item }}"
+  with_items:
+    - ssh/config

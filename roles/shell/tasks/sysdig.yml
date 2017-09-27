@@ -1,0 +1,26 @@
+---
+
+- name: Add GPG key
+  apt_key:
+    url: https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
+
+- name: Get sysdig repo
+  get_url:
+    url: http://download.draios.com/stable/deb/draios.list
+    dest: /etc/apt/sources.list.d/draios.list
+    owner: root 
+    group: root 
+    mode: 0644
+
+- name: Install Linux headers
+  apt:
+    name: linux-headers-{{ ansible_kernel }} 
+    update_cache: yes 
+    cache_valid_time: 3600
+
+- name: Install sysdig
+  apt:
+    name: sysdig
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600

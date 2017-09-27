@@ -1,0 +1,15 @@
+---
+
+- name: GUI packages
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - asciinema
+    - chromium-browser
+    - gparted
+    - inkscape
+    - mypaint
+    - qtpass
+    - simplescreenrecorder
+    - vlc
+
+- import_tasks: sublime-text-3.yml

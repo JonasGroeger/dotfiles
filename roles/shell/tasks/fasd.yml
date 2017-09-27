@@ -1,0 +1,12 @@
+---
+
+- name: Create .local/bin directory
+  file: path="/home/{{ username }}/.local/bin/" state=directory
+
+- name: Install fasd
+  get_url:
+    url: "https://raw.githubusercontent.com/clvv/fasd/master/fasd"
+    dest: "/home/{{ username }}/.local/bin/fasd"
+    group: "{{ username }}"
+    owner: "{{ username }}"
+    mode: "u+x"

@@ -1,0 +1,12 @@
+---
+
+- name: Create .local/bin directory
+  file: path="/home/{{ username }}/.local/bin/" state=directory
+
+- name: Install Scripts
+  copy:
+    src: "bin/"
+    dest: "/home/{{ username }}/.local/bin/"
+    group: "{{ username }}"
+    owner: "{{ username }}"
+    mode: "u+x"

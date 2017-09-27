@@ -1,0 +1,13 @@
+---
+
+- name: Install git
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - git
+
+- name: Link .gitconfig
+  file:
+    src: "{{ role_path }}/files/gitconfig"
+    dest: "/home/{{ username }}/.gitconfig"
+    state: link
+    force: yes

@@ -1,0 +1,5 @@
+# Move the location of the actual zsh dotfiles
+export ZDOTDIR="$HOME/.config/zsh"
+export ADOTDIR="$HOME/.config/antigen"
+
+test -f "$ZDOTDIR/.zshrc" && source "$ZDOTDIR/.zshrc"

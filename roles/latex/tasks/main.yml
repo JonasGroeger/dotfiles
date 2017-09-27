@@ -1,0 +1,15 @@
+---
+
+- name: Install Latex
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - texlive-base
+    - texlive-latex-base
+    - texlive-latex-recommended
+    - texlive-fonts-recommended
+    - texlive-latex-extra
+    - texlive-lang-english
+    - texlive-lang-german
+    - texlive-xetex
+    - latexmk
+    - biber

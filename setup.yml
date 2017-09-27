@@ -1,0 +1,15 @@
+---
+
+- hosts: localhost
+  vars:
+    - username: jonas
+  roles:
+    - shell
+    - ssh
+    - debian
+    - docker
+    - git
+    - guis
+    - java
+    - latex
+    - python

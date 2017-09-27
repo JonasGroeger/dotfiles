@@ -1,0 +1,34 @@
+---
+
+- name: Create .config/zsh directory
+  file: path="/home/{{ username }}/.config/zsh/" state=directory
+
+- name: Install Antigen
+  get_url:
+    url: https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh
+    dest: "/home/{{ username }}/.config/zsh/antigen.zsh"
+
+- name: Create .local/share/fonts directory
+  file: path="/home/{{ username }}/.local/share/fonts/zsh/" state=directory
+
+- name: Install Ubuntu Mono Fonts with Powerline
+  copy:
+    src: "{{ item }}"
+    dest: "/home/{{ username }}/.local/share/fonts/{{ item }}"
+  with_items:
+    - "Ubuntu Mono derivative Powerline.ttf"
+    - "Ubuntu Mono derivative Powerline Bold.ttf"
+    - "Ubuntu Mono derivative Powerline Italic.ttf"
+    - "Ubuntu Mono derivative Powerline Bold Italic.ttf"
+  register: fonts
+
+- name: Update font cache
+  shell: fc-cache -fv "/home/{{ username }}/.local/share/fonts/"
+  when: fonts|changed
+
+- name: Link real .zshrc
+  file:
+    src: "{{ role_path }}/files/.config/zsh/.zshrc"
+    dest: "/home/{{ username }}/.config/zsh/.zshrc"
+    state: link
+    force: yes

@@ -1,0 +1,54 @@
+---
+
+- name: Install shell and shell-related programs
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - curl
+    - htop
+    - most
+    - p7zip-full
+    - pv
+    - silversearcher-ag
+    - tree
+    - unp
+    - zsh
+    - build-essential
+    - cmake
+    - ffmpeg
+    - gcc
+    - make
+    - pwgen
+    - sipcalc
+    - vim
+    - whois
+    - jq
+    - httpie
+    - util-linux # namei
+    - ttf-ancient-fonts # bullet-train.zsh
+    - fontconfig
+    - deborphan
+
+- name: Get zsh path
+  shell: "which zsh"
+  register: zsh_path
+  changed_when: no
+
+- name: Set default shell
+  user: name={{ username }} shell={{ zsh_path.stdout }}
+  when: '"zsh" not in zsh_path.stdout'
+
+- name: Link
+  file:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "/home/{{ username }}/.{{ item }}"
+    state: link
+    force: yes
+  with_items:
+    - inputrc
+    - editorconfig
+    - zshrc
+
+- import_tasks: antigen.yml
+- import_tasks: fasd.yml
+- import_tasks: sysdig.yml
+- import_tasks: bin.yml
