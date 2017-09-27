@@ -3,6 +3,9 @@
 - name: Create .local/bin directory
   file: path="/home/{{ username }}/.local/bin/" state=directory
 
+- name: Create .local/share/fasd for fasd data
+  file: path="/home/{{ username }}/.local/share/fasd/" state=directory
+
 - name: Install fasd
   get_url:
     url: "https://raw.githubusercontent.com/clvv/fasd/master/fasd"

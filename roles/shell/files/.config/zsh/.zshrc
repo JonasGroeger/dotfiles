@@ -1,3 +1,13 @@
+#
+# XDG Base Directory Spec
+#
+export XDG_CACHE_HOME=~/.cache
+export XDG_CONFIG_HOME=~/.config
+export XDG_DATA_HOME=~/.local/share
+
+#
+# Load Antigen
+#
 source ~/.config/zsh/antigen.zsh
 
 antigen use oh-my-zsh
@@ -19,7 +29,6 @@ antigen apply
 #
 # Aliases
 #
-
 alias checkperm="namei $(pwd) -movx"
 alias -- -='cd -'
 alias ...=../..
@@ -38,8 +47,16 @@ export EDITOR="vim"
 export PAGER="most"
 export PATH="$HOME/.local/bin:$PATH"
 
-# Prompt
+#
+# Moving shitty dotfiles
+#
+export ICEAUTHORITY=${XDG_CACHE_HOME}/ICEauthority
+export _FASD_DATA=${XDG_DATA_HOME}/fasd/data
+export HISTFILE="${XDG_DATA_HOME}"/zsh/history
 
+#
+# Prompt
+#
 BULLETTRAIN_PROMPT_ORDER=(
     time
     status
@@ -60,5 +77,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 BULLETTRAIN_CONTEXT_BG=cyan
 BULLETTRAIN_CONTEXT_FG=black
 
-# Enable fasd
+#
+# fasd
+#
 eval "$(fasd --init auto)"
