@@ -28,3 +28,18 @@
     name: docker-ce
     state: latest
   become: true
+
+- name: Ensure Docker is started and enabled at boot.
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  become: true
+
+- name: Add {{ username }} to the docker group
+  user:
+    name: "{{ username }}"
+    groups: docker
+    append: yes
+    createhome: no
+  become: true

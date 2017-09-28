@@ -26,6 +26,10 @@
     state: link
     force: yes
 
+- name: Upgrade debian pip3
+  pip: name=pip executable=pip3 extra_args="--upgrade --ignore-installed"
+  become: true
+
 - name: Install Python 3 Tools
   pip: name="{{ item }}" executable=pip3
   with_items:
