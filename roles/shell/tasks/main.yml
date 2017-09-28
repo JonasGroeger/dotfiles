@@ -27,6 +27,7 @@
     - ttf-ancient-fonts # bullet-train.zsh
     - fontconfig
     - deborphan
+  become: true
 
 - name: Get zsh path
   shell: "which zsh"
@@ -36,6 +37,7 @@
 - name: Set default shell
   user: name={{ username }} shell={{ zsh_path.stdout }}
   when: '"zsh" not in zsh_path.stdout'
+  become: true
 
 - name: Link
   file:

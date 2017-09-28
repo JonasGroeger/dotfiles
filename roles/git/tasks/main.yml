@@ -1,9 +1,8 @@
 ---
 
 - name: Install git
-  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
-  with_items:
-    - git
+  apt: name=git state=latest update_cache=yes cache_valid_time=3600
+  become: true
 
 - name: Link .gitconfig
   file:

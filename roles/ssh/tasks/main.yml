@@ -1,9 +1,8 @@
 ---
 
 - name: Install ssh
-  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
-  with_items:
-    - ssh
+  apt: name=ssh state=latest update_cache=yes cache_valid_time=3600
+  become: true
 
 - name: Check if {{ username }} has SSH key
   stat: path="/home/{{ username }}/.ssh/id_rsa"

@@ -11,5 +11,6 @@
     - qtpass
     - simplescreenrecorder
     - vlc
+  become: true
 
 - import_tasks: sublime-text-3.yml

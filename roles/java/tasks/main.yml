@@ -4,14 +4,13 @@
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
   with_items:
     - default-jdk
+  become: true
 
 - name: Create zsh-env directory
   file: path="/home/{{ username }}/.config/zsh-env/" state=directory
 
 - name: Link java.zsh
   file:
-    src: "{{ role_path }}/files/{{ item }}"
-    dest: "/home/{{ username }}/.config/zsh-env/{{ item }}"
+    src: "{{ role_path }}/files/config/zsh-env/java.zsh"
+    dest: "/home/{{ username }}/.config/zsh-env/java.zsh"
     state: link
-  with_items:
-    - java.zsh

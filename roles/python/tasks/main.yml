@@ -6,6 +6,7 @@
     - python
     - python-dev
     - ipython
+  become: true
 
 - name: Install Python3
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
@@ -16,15 +17,14 @@
     - python3-wheel
     - python3-dev
     - ipython3
+  become: true
 
-- name: Link
+- name: Link pypirc
   file:
-    src: "{{ role_path }}/files/{{ item }}"
-    dest: "/home/{{ username }}/.{{ item }}"
+    src: "{{ role_path }}/files/pypirc"
+    dest: "/home/{{ username }}/.pypirc"
     state: link
     force: yes
-  with_items:
-    - pypirc
 
 - name: Install Python 3 Tools
   pip: name="{{ item }}" executable=pip3
@@ -32,3 +32,4 @@
     - pipenv
     - cookiecutter
     - ansible-lint
+  become: true

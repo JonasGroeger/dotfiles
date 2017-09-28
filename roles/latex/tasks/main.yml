@@ -13,3 +13,4 @@
     - texlive-xetex
     - latexmk
     - biber
+  become: true

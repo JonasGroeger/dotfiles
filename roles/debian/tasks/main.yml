@@ -2,6 +2,7 @@
 
 - name: Install debian tooling
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  become: true
   with_items:
     - devscripts
     - dh-make
@@ -11,8 +12,6 @@
 
 - name: Link debian.zsh
   file:
-    src: "{{ role_path }}/files/{{ item }}"
-    dest: "/home/{{ username }}/.config/zsh-env/{{ item }}"
+    src: "{{ role_path }}/files/config/zsh-env/debian.zsh"
+    dest: "/home/{{ username }}/.config/zsh-env/debian.zsh"
     state: link
-  with_items:
-    - debian.zsh

@@ -2,6 +2,7 @@
 
 - name: Install docker deps
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  become: true
   with_items:
     - apt-transport-https
     - ca-certificates
@@ -13,14 +14,17 @@
 - name: Add apt key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
+  become: true
 
 - name: Add docker repo
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
     state: present
     update_cache: yes
+  become: true
 
 - name: Install docker
   apt:
     name: docker-ce
     state: latest
+  become: true

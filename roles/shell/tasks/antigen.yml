@@ -9,11 +9,11 @@
     dest: "/home/{{ username }}/.config/zsh/antigen.zsh"
 
 - name: Create .local/share/fonts directory
-  file: path="/home/{{ username }}/.local/share/fonts/zsh/" state=directory
+  file: path="/home/{{ username }}/.local/share/fonts/" state=directory
 
-- name: Install Ubuntu Mono Fonts with Powerline
+- name: Install Fonts
   copy:
-    src: "{{ item }}"
+    src: "local/share/fonts/{{ item }}"
     dest: "/home/{{ username }}/.local/share/fonts/{{ item }}"
   with_items:
     - "Ubuntu Mono derivative Powerline.ttf"
@@ -26,9 +26,9 @@
   shell: fc-cache -fv "/home/{{ username }}/.local/share/fonts/"
   when: fonts|changed
 
-- name: Link real .zshrc
+- name: Link real zshrc
   file:
-    src: "{{ role_path }}/files/.config/zsh/.zshrc"
-    dest: "/home/{{ username }}/.config/zsh/.zshrc"
+    src: "{{ role_path }}/files/config/zsh/zshrc"
+    dest: "/home/{{ username }}/.config/zsh/zshrc"
     state: link
     force: yes
