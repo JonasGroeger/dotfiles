@@ -3,5 +3,5 @@
 ansible-playbook \
     -i inventory \
     --ask-become-pass \
-    --vault-password-file=vault_pass.sh \
+    --vault-password-file=vault_pass \
     setup.yml
