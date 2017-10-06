@@ -14,3 +14,10 @@
     - latexmk
     - biber
   become: true
+
+- name: Link .latexmkrc
+  file:
+    src: "{{ role_path }}/files/latexmkrc"
+    dest: "/home/{{ username }}/.latexmkrc"
+    state: link
+    force: yes
