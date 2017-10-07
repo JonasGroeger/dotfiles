@@ -1,0 +1,7 @@
+---
+
+- name: Install snapcraft
+  apt:
+    name: snapcraft
+    state: latest
+  become: true

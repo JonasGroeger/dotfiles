@@ -1,0 +1,19 @@
+---
+
+- apt:
+    name: apt-transport-https
+    state: latest
+  become: true
+
+- apt_repository:
+    repo: "ppa:webupd8team/terminix"
+    update_cache: yes
+  become: true
+
+- apt:
+    name: tilix
+    state: latest
+  become: true
+
+- name: Load Tilix config
+  shell: echo "{{ lookup('file', 'tilix.dconf') }}" | dconf load /com/gexperts/Tilix/

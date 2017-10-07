@@ -15,3 +15,5 @@
   become: true
 
 - import_tasks: sublime-text-3.yml
+- import_tasks: tilix.yml
+- import_tasks: dropbox.yml

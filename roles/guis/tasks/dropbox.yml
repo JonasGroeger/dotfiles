@@ -1,0 +1,26 @@
+---
+
+- name: Check if dropbox is installed
+  command: dpkg-query -W dropbox
+  register: check_dropbox
+  failed_when: check_dropbox.rc > 1
+  changed_when: check_dropbox.rc == 1
+
+- name: Download Dropbox
+  get_url:
+    url: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
+    dest: /tmp/dropbox.deb
+  when: check_dropbox.rc == 1
+
+
+- name: Install Dropbox
+  apt:
+    name=python-gpgme
+  become: true
+  when: check_dropbox.rc == 1
+
+- name: Install Dropbox
+  apt:
+    deb: "/tmp/dropbox.deb"
+  become: true
+  when: check_dropbox.rc == 1

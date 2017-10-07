@@ -27,6 +27,7 @@
     - ttf-ancient-fonts # bullet-train.zsh
     - fontconfig
     - deborphan
+    - pdftk
   become: true
 
 - name: Get zsh path
@@ -50,7 +51,11 @@
     - editorconfig
     - zshrc
 
+- name: Create .local/share/zsh for zsh history
+  file: path="/home/{{ username }}/.local/share/zsh/" state=directory
+
 - import_tasks: antigen.yml
 - import_tasks: fasd.yml
+- import_tasks: snapcraft.yml
 - import_tasks: sysdig.yml
 - import_tasks: bin.yml

@@ -19,8 +19,9 @@ antigen bundle git
 antigen bundle pip
 antigen bundle sudo
 
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle ~/.config/zsh-env
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle marzocchi/zsh-notify
 
 antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
