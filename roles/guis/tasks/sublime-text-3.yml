@@ -12,7 +12,6 @@
 - apt_repository:
     repo: "deb https://download.sublimetext.com/ apt/stable/"
     filename: "sublime-text"
-    update_cache: yes
   become: true
 
 - apt:
