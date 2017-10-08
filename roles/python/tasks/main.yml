@@ -31,7 +31,7 @@
   become: true
 
 - name: Install Python 3 Tools
-  pip: name="{{ item }}" executable=pip3
+  pip: name="{{ item }}" executable=pip3 state=latest
   with_items:
     - pipenv
     - cookiecutter
