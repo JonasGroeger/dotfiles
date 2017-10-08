@@ -17,6 +17,7 @@
 - import_tasks: sublime-text-3.yml
 - import_tasks: tilix.yml
 - import_tasks: dropbox.yml
+- import_tasks: vscode.yml
 
 - name: Show date in gnome panel
   shell: "gsettings set org.gnome.desktop.interface clock-show-date true"
