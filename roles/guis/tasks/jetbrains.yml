@@ -1,0 +1,13 @@
+---
+
+- name: "JetBrains: Add APT Repository"
+  apt_repository:
+    repo: 'ppa:jonas-groeger/jetbrains'
+    filename: jetbrains
+  become: true
+
+- name: "JetBrains: Install"
+  apt:
+    name: pycharm-community
+    state: latest
+  become: true
