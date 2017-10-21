@@ -28,6 +28,7 @@
     - fontconfig
     - deborphan
     - pdftk
+    - nmap
   become: true
 
 - name: Get zsh path
