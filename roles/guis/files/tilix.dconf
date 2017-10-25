@@ -2,10 +2,10 @@
 list=['2b7c4080-0ddd-46c5-8f23-563fd3ba789d']
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
-foreground-color='#A7A7A7'
-visible-name='Default'
+foreground-color='#A1B0B8'
+visible-name='Jonas'
 login-shell=true
-palette=['#000000', '#CC0000', '#4D9A05', '#C3A000', '#3464A3', '#754F7B', '#05979A', '#D3D6CF', '#545652', '#EF2828', '#89E234', '#FBE84F', '#729ECF', '#AC7EA8', '#34E2E2', '#EDEDEB']
+palette=['#252525', '#FF5252', '#C3D82C', '#FFC135', '#42A5F5', '#D81B60', '#00ACC1', '#F5F5F5', '#708284', '#FF5252', '#C3D82C', '#FFC135', '#42A5F5', '#D81B60', '#00ACC1', '#F5F5F5']
 custom-command='/usr/bin/zsh'
 badge-color-set=false
 default-size-rows=30
@@ -13,13 +13,13 @@ default-size-columns=120
 use-system-font=false
 cursor-colors-set=false
 highlight-colors-set=false
-use-theme-colors=true
+use-theme-colors=false
 use-custom-command=true
 bold-color-set=false
 font='Ubuntu Mono derivative Powerline 12'
 terminal-bell='none'
 scrollback-unlimited=true
-background-color='#1E1E1E'
+background-color='#263238'
 
 [/]
 copy-on-select=true

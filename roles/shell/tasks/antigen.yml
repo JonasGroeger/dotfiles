@@ -32,3 +32,10 @@
     dest: "/home/{{ username }}/.config/zsh/zshrc"
     state: link
     force: yes
+
+- name: Link more
+  file:
+    src: "{{ role_path }}/files/config/zsh/zshrc"
+    dest: "/home/{{ username }}/.config/zsh/.zshrc"
+    state: link
+    force: yes
