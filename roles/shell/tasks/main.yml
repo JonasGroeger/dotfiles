@@ -29,6 +29,7 @@
     - deborphan
     - pdftk
     - nmap
+    - ranger
   become: true
 
 - name: Get zsh path
