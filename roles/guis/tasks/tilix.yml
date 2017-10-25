@@ -15,5 +15,16 @@
     state: latest
   become: true
 
-- name: Load Tilix config
-  shell: echo "{{ lookup('file', 'tilix.dconf') }}" | dconf load /com/gexperts/Tilix/
+- name: Load current Tilix config
+  shell: dconf dump /com/gexperts/Tilix/
+  register: current_tilix_config
+  changed_when: False
+
+- name: Load new Tilix config
+  shell: echo "{{ lookup('file', 'tilix.dconf') }}"
+  register: new_tilix_config
+  changed_when: False
+
+- name: Load Tilix config if changed
+  shell: echo "{{ new_tilix_config.stdout }}" | dconf load /com/gexperts/Tilix/
+  when: current_tilix_config.stdout != new_tilix_config.stdout
