@@ -1,0 +1,20 @@
+---
+
+- name: "Yarn: Add GPG key"
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+  become: true
+
+- name: "Yarn: Add APT Repository"
+  apt_repository:
+    repo: 'deb https://dl.yarnpkg.com/debian/ stable main'
+    filename: yarn
+  become: true
+
+- name: Install sysdig
+  apt:
+    name: yarn
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true

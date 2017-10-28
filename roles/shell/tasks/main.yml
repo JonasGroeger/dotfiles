@@ -61,3 +61,4 @@
 - import_tasks: snapcraft.yml
 - import_tasks: sysdig.yml
 - import_tasks: bin.yml
+- import_tasks: yarn.yml
