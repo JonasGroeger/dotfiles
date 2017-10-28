@@ -1,0 +1,20 @@
+---
+
+- name: "NodeJS: Add GPG key"
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+  become: true
+
+- name: "NodeJS: Add APT Repository"
+  apt_repository:
+    repo: 'deb https://deb.nodesource.com/node_8.x xenial main'
+    filename: yarn
+  become: true
+
+- name: "NodeJS: Install"
+  apt:
+    name: nodejs
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true

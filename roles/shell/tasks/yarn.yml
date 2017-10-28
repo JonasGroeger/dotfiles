@@ -11,7 +11,7 @@
     filename: yarn
   become: true
 
-- name: Install sysdig
+- name: "Yarn: Install"
   apt:
     name: yarn
     state: latest
