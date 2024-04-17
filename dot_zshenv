@@ -1,0 +1,5 @@
+# Move ZSH configuration to ~/.config/zsh
+# See https://zsh.sourceforge.io/Intro/intro_3.html
+
+ZDOTDIR="$HOME/.config/zsh"
+. "$ZDOTDIR/.zshenv"
