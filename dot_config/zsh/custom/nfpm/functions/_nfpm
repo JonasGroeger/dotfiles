@@ -1,0 +1,8 @@
+#compdef nfpm
+
+if (( $+commands[nfpm] )); then
+  eval "$(nfpm completion zsh)"
+
+  _nfpm "$@"
+fi
+

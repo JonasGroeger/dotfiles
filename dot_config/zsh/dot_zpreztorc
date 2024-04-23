@@ -22,6 +22,8 @@ zstyle ':prezto:load' pmodule-dirs "$HOME/.config/zsh/custom"
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
+# Modules that provide completions must go before the 'completion' module.
+# Clear completion cache: rm -f ~/.cache/prezto/zcompdump
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
@@ -30,13 +32,15 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'nfpm' \
+  'just' \
   'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
   'prompt' \
   'ssh' \
-  'gpg' \
+  'fzf' \
   'mvnw' \
   'zoxide' \
   'go' \

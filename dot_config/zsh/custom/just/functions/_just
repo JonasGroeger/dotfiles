@@ -1,0 +1,8 @@
+#compdef just
+
+if (( $+commands[just] )); then
+  eval "$(just --completions zsh)"
+
+  _just "$@"
+fi
+
