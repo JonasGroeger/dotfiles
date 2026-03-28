@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# TODO: Create asdf-plugin. Hints: https://mise.jdx.dev/dev-tools/backends/asdf.html, https://github.com/gunzy83/asdf-auth0-cli/blob/main/lib/utils.bash
+
+set -u
+set -o pipefail
+
+# Source: https://gist.github.com/zeroasterisk/1183611
+function confirm() {
+  echo -n "$@ "
+  read -e answer
+  for response in y Y yes YES Yes Sure sure SURE OK ok Ok; do
+    if [ "_$answer" == "_$response" ]; then
+      return 0
+    fi
+  done
+
+  # Any answer other than the list above is considerred a "no" answer
+  return 1
+}
+
+run_detached() {
+    nohup "$@" </dev/null >/dev/null 2>&1 &
+    disown
+}
+
+
+KDRIVE_LATEST_INFO="$(curl -s https://www.infomaniak.com/drive/latest | jq -r '."linux-amd64"')"
+KDRIVE_LATEST_VERSIONSTRING="$(echo "$KDRIVE_LATEST_INFO" | jq -r '.versionstring')"
+KDRIVE_LATEST_VERSION="$(echo "$KDRIVE_LATEST_INFO" | jq -r '.version')"
+KDRIVE_LATEST_APPIMAGE="$(echo "$KDRIVE_LATEST_INFO" | jq -r '.downloadurl')"
+
+KDRIVE_INSTALLED_VERSIONSTRING="$(kdrive --version 2>/dev/null | sed -nE 's/^kDrive version (.*)$/\1/p')"
+
+if [ "$KDRIVE_INSTALLED_VERSIONSTRING" = "$KDRIVE_LATEST_VERSIONSTRING" ]; then
+  echo "✅ kDrive up-to-date ($KDRIVE_LATEST_VERSION)"
+  exit 0
+fi
+
+confirm "Update kDrive $KDRIVE_INSTALLED_VERSIONSTRING ➡️ $KDRIVE_LATEST_VERSIONSTRING? [y]es/[n]o"
+if [ $? -ne 0 ]; then
+  echo "Doing nothing."
+  exit 0
+fi
+
+KDRIVE_TARGET="$HOME/.local/bin/kdrive"
+KDRIVE_PROCESS_NAME=kDrive_client
+KDRIVE_TEMP="$(mktemp)"
+
+echo "✨ Downloading new kDrive"
+wget -O "$KDRIVE_TEMP" "$KDRIVE_LATEST_APPIMAGE"
+
+echo "✨ Stopping old kDrive"
+killall --process-group -- "$KDRIVE_PROCESS_NAME"
+
+echo "✨ Installing new kDrive"
+mv "$KDRIVE_TEMP" "$KDRIVE_TARGET"
+chmod +x "$KDRIVE_TARGET"
+
+echo "✨ Launching kDrive"
+run_detached "$KDRIVE_TARGET"

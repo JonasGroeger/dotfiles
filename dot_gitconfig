@@ -33,6 +33,7 @@
     prune = true
 [push]
     followTags = true
+    autoSetupRemote = true
 
 # Sign commits and tags by default
 [user]
@@ -57,4 +58,3 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
-

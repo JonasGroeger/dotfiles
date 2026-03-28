@@ -1,2 +1,5 @@
 cd:
   command: /usr/bin/zsh
+
+bitwarden:
+  unlock: true

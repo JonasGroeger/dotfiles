@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# TODO: Create asdf-plugin. Hints: https://mise.jdx.dev/dev-tools/backends/asdf.html, https://github.com/gunzy83/asdf-auth0-cli/blob/main/lib/utils.bash
+
+set -u
+set -o pipefail
+
+# Source: https://gist.github.com/zeroasterisk/1183611
+function confirm() {
+  echo -n "$@ "
+  read -e answer
+  for response in y Y yes YES Yes Sure sure SURE OK ok Ok; do
+    if [ "_$answer" == "_$response" ]; then
+      return 0
+    fi
+  done
+
+  # Any answer other than the list above is considerred a "no" answer
+  return 1
+}
+
+ZOOM_LATEST_URL="https://zoom.us/client/latest/zoom_amd64.deb"
+ZOOM_VERSION_REGEX='[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+'
+
+ZOOM_INSTALLED_VERSION="$(dpkg-query --showformat='${Version}' --show zoom)"
+ZOOM_LATEST_VERSION="$(curl -w '%{redirect_url}' -o /dev/null -s $ZOOM_LATEST_URL | grep -E --only-matching "$ZOOM_VERSION_REGEX")"
+
+if [ "$ZOOM_INSTALLED_VERSION" = "$ZOOM_LATEST_VERSION" ]; then
+  echo "✅ Zoom up-to-date ($ZOOM_INSTALLED_VERSION)"
+  exit 0
+fi
+
+confirm "Update zoom $ZOOM_INSTALLED_VERSION ➡️ $ZOOM_LATEST_VERSION? [y]es/[n]o"
+if [ $? -ne 0 ]; then
+  echo "Doing nothing."
+  exit 0
+fi
+
+ZOOM_LATEST_DEB="$(mktemp)"
+wget -O "$ZOOM_LATEST_DEB" "$ZOOM_LATEST_URL"
+sudo dpkg -i "$ZOOM_LATEST_DEB"
+rm -f "$ZOOM_LATEST_DEB"

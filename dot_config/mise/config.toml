@@ -1,0 +1,48 @@
+[tools]
+"aqua:BurntSushi/ripgrep" = "latest"
+"aqua:aquasecurity/trivy" = "latest"
+"aqua:muesli/duf" = "latest"
+"aqua:neovim/neovim" = "latest"
+"pipx:ansible-core" = "latest"
+"github:casey/just" = "latest"
+"github:dandavison/delta" = "latest"
+"github:sharkdp/bat" = "latest"
+"github:twpayne/chezmoi" = "latest"
+"github:ajeetdsouza/zoxide" = "latest"
+"github:sharkdp/fd" = "latest"
+"github:wagoodman/dive" = "latest"
+"github:tomnomnom/gron" = "latest"
+"github:junegunn/fzf" = "latest"
+"aqua:ogham/exa" = "latest"
+"github:yt-dlp/yt-dlp" = "latest"
+"pipx:esptool" = "latest"
+"pipx:ansible-lint" = "latest"
+"github:starship/starship" = "latest"
+"aqua:bitwarden/clients" = "latest"
+"aqua:ducaale/xh" = "latest"
+"aqua:mike-engel/jwt-cli" = "latest"
+"aqua:ast-grep/ast-grep" = "latest"
+"aqua:goreleaser/nfpm" = "latest"
+"aqua:astral-sh/ruff" = "latest"
+"aqua:astral-sh/uv" = "latest"
+vault = "latest"
+claude = { version = "latest", bin = "claude", platforms = """
+[linux-arm64]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/{version}/linux-arm64/claude"
+
+[linux-x64]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/{version}/linux-x64/claude"
+
+[macos-arm64]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/{version}/darwin-arm64/claude"
+
+[macos-x64]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/{version}/darwin-x64/claude"
+""", version_list_url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/latest" }
+hugo = "latest"
+yq = "latest"
+k9s = "latest"
+opencode = "latest"
+
+[settings]
+experimental = true

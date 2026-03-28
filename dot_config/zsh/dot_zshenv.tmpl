@@ -5,3 +5,5 @@ fi
 
 # See /etc/zsh/zshrc
 skip_global_compinit=1
+
+export GITHUB_TOKEN='{{ (index (bitwardenFields "item" "6678ec85-b2d3-410f-aabe-a8290150e55e") "jonas-cc-api-key").value }}'
