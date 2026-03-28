@@ -1,0 +1,165 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "provider": {
+    "portkey": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Portkey",
+      "options": {
+        "baseURL": "https://api.portkey.ai/v1",
+        "headers": {
+          "x-portkey-api-key": "{env:PORTKEY_API_KEY}"
+        }
+      },
+      "models": {
+        "@azure-openai-foundry/whisper": {
+          "name": "Whisper (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/tts-hd": {
+          "name": "TTS HD (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/tts": {
+          "name": "TTS (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/text-embedding-ada-002": {
+          "name": "Text Embedding Ada 002 (Azure OpenAI Foundry)"
+        },
+        "@openrouter/qwen/qwen3-max": {
+          "name": "Qwen3 Max (OpenRouter)"
+        },
+        "@bedrock-eu-south-1/qwen.qwen3-vl-235b-a22b": {
+          "name": "Qwen3 VL 235B A22B (Bedrock EU South 1)"
+        },
+        "@bedrock-eu-south-1/qwen.qwen3-next-80b-a3b": {
+          "name": "Qwen3 Next 80B A3B (Bedrock EU South 1)"
+        },
+        "@bedrock-eu-north-1/qwen.qwen3-coder-480b-a35b-v1:0": {
+          "name": "Qwen3 Coder 480B A35B (Bedrock EU North 1)"
+        },
+        "@bedrock-eu-south-1/qwen.qwen3-235b-a22b-2507-v1:0": {
+          "name": "Qwen3 235B A22B 2507 (Bedrock EU South 1)"
+        },
+        "@openrouter/openai/gpt-oss-120b": {
+          "name": "GPT OSS 120B (OpenRouter)"
+        },
+        "@mistral-ai/open-mixtral-8x7b": {
+          "name": "Open Mixtral 8x7B (Mistral AI)"
+        },
+        "@mistral-ai/open-mixtral-8x22b": {
+          "name": "Open Mixtral 8x22B (Mistral AI)"
+        },
+        "@mistral-ai/open-mistral-7b": {
+          "name": "Open Mistral 7B (Mistral AI)"
+        },
+        "@mistral-ai/mistral-tiny": {
+          "name": "Mistral Tiny (Mistral AI)"
+        },
+        "@mistral-ai/mistral-small-latest": {
+          "name": "Mistral Small Latest (Mistral AI)"
+        },
+        "@mistral-ai/mistral-small": {
+          "name": "Mistral Small (Mistral AI)"
+        },
+        "@mistral-ai/mistral-medium-latest": {
+          "name": "Mistral Medium Latest (Mistral AI)"
+        },
+        "@mistral-ai/mistral-medium": {
+          "name": "Mistral Medium (Mistral AI)"
+        },
+        "@mistral-ai/mistral-large-latest": {
+          "name": "Mistral Large Latest (Mistral AI)"
+        },
+        "@mistral-ai/mistral-embed": {
+          "name": "Mistral Embed (Mistral AI)"
+        },
+        "@mistral-ai/magistral-small-latest": {
+          "name": "Magistral Small Latest (Mistral AI)"
+        },
+        "@mistral-ai/magistral-medium-latest": {
+          "name": "Magistral Medium Latest (Mistral AI)"
+        },
+        "@azure-openai-foundry/gpt-5.3-codex": {
+          "name": "GPT 5.3 Codex (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5.2-codex": {
+          "name": "GPT 5.2 Codex (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5.2-chat": {
+          "name": "GPT 5.2 Chat (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5.2": {
+          "name": "GPT 5.2 (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5.1-codex-mini": {
+          "name": "GPT 5.1 Codex Mini (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5.1-codex": {
+          "name": "GPT 5.1 Codex (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5.1-chat": {
+          "name": "GPT 5.1 Chat (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5.1": {
+          "name": "GPT 5.1 (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5-nano": {
+          "name": "GPT 5 Nano (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5-mini": {
+          "name": "GPT 5 Mini (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-5-chat": {
+          "name": "GPT 5 Chat (Azure OpenAI Foundry)"
+        },
+        "@azure-openai-foundry/gpt-4.1": {
+          "name": "GPT 4.1 (Azure OpenAI Foundry)"
+        },
+        "@vertex-ai/gemini-2.5-pro-tts": {
+          "name": "Gemini 2.5 Pro TTS (Vertex AI)"
+        },
+        "@vertex-ai/gemini-2.5-pro": {
+          "name": "Gemini 2.5 Pro (Vertex AI)"
+        },
+        "@vertex-ai/gemini-2.5-flash-tts": {
+          "name": "Gemini 2.5 Flash TTS (Vertex AI)"
+        },
+        "@vertex-ai/gemini-2.5-flash-lite": {
+          "name": "Gemini 2.5 Flash Lite (Vertex AI)"
+        },
+        "@vertex-ai/gemini-2.5-flash-image": {
+          "name": "Gemini 2.5 Flash Image (Vertex AI)"
+        },
+        "@vertex-ai/gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash (Vertex AI)"
+        },
+        "@vertex-ai/anthropic.claude-sonnet-4-6": {
+          "name": "Claude Sonnet 4.6 (Vertex AI)"
+        },
+        "@vertex-ai/anthropic.claude-sonnet-4-5@20250929": {
+          "name": "Claude Sonnet 4.5 20250929 (Vertex AI)"
+        },
+        "@vertex-ai/anthropic.claude-opus-4-6": {
+          "name": "Claude Opus 4.6 (Vertex AI)"
+        },
+        "@vertex-ai/anthropic.claude-opus-4-5@20251101": {
+          "name": "Claude Opus 4.5 20251101 (Vertex AI)"
+        },
+        "@vertex-ai/anthropic.claude-haiku-4-5@20251001": {
+          "name": "Claude Haiku 4.5 20251001 (Vertex AI)"
+        },
+        "@openrouter/Qwen3-Coder-30B-A3B-Instruct": {
+          "name": "Qwen3 Coder 30B A3B Instruct (OpenRouter)"
+        },
+        "@openrouter/Mistral-Small-3.2-24B-Instruct-2506": {
+          "name": "Mistral Small 3.2 24B Instruct 2506 (OpenRouter)"
+        },
+        "@openrouter/Meta-Llama-3_3-70B-Instruct": {
+          "name": "Meta Llama 3.3 70B Instruct (OpenRouter)"
+        },
+        "@azure-openai-foundry/Kimi-K2.5": {
+          "name": "Kimi K2.5 (Azure OpenAI Foundry)"
+        }
+      }
+    }
+  }
+}

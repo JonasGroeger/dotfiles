@@ -7,3 +7,4 @@ fi
 skip_global_compinit=1
 
 export GITHUB_TOKEN='{{ (index (bitwardenFields "item" "6678ec85-b2d3-410f-aabe-a8290150e55e") "jonas-cc-api-key").value }}'
+export PORTKEY_API_KEY='{{ (bitwardenFields "item" "34c7a6a5-2591-4810-b7d5-b3ea0136f765").jonas_cc.value }}'
